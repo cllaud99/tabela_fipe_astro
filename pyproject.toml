@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "tabela-fipe-astro"
+version = "0.1.0"
+description = ""
+authors = ["claudio_pontes <claudiohpontes@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.5"
+taskipy = "^1.12.2"
+requests = "^2.31.0"
+pytest = "^8.1.1"
+pandas = "^2.2.2"
+pydantic = "^2.7.0"
+pandera = "^0.18.3"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+
+[tool.taskipy.tasks]
+format = """
+isort .
+black .
+"""
+kill = "kill -9 $(lsof -t -i :8000)"
+test = "pytest -v"
+run = """
+python3 app/main.py
+"""
+doc = "mkdocs serve"
