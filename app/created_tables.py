@@ -1,4 +1,5 @@
 import os
+from .load_settings import DATABASE_URL
 
 from dotenv import load_dotenv
 from sqlalchemy import TIMESTAMP, Column, Integer, String, create_engine
@@ -31,16 +32,6 @@ class TabelaVeiculo(Base):
     siglaCombustivel = Column(String(5))
     dataConsulta = Column(TIMESTAMP)
 
-
-# Carregue as variáveis de ambiente do arquivo .env
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_NAME = os.getenv("DB_NAME")
-
-# Crie a string de conexão
-DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 # Crie o engine e a tabela
 engine = create_engine(DATABASE_URL)

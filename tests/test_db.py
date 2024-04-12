@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append("/home/claudio/projetos/tabela_fipe_astro/app")
+
 from unittest.mock import MagicMock
 import pytest
 from app.created_tables import MarcaVeiculo, TabelaVeiculo
